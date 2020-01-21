@@ -1,8 +1,11 @@
 class JobsController < ApplicationController
-  
     def index
-        @jobs = Job.all 
+        @jobs = Job.all
         render json: @jobs
-    end    
+    end
 
+    def show
+        @job = Job.find_by(id: params[:id])
+        render json: @job
+    end
 end
