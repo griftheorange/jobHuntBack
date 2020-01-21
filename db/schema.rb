@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_21_172722) do
+ActiveRecord::Schema.define(version: 2020_01_21_170948) do
 
   create_table "job_states", force: :cascade do |t|
     t.string "status"
