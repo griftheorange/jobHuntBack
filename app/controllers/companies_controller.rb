@@ -15,7 +15,7 @@ class CompaniesController < ApplicationController
     def create 
         @company = Company.create(username: params[:username],password_digest: params[:password_digest])
         if @company.valid?
-                render json: {token: genToken(@company)}
+            render json: {id: @company.id, type: "company", token: genToken(@company)}
         else 
             render json: {errors: @company.errors.full_messages} 
         end
@@ -28,8 +28,8 @@ class CompaniesController < ApplicationController
         if @company 
             
             if @company.authenticate(params["password"])
-
-                render json: {token: genToken(@company)}
+                render json: {id: @company.id, type: "company", token: genToken(@company)}
+                # render json: {token: genToken(@company)}
             else 
                 render json: {errors: ["Password Incorrect"]}
             end
