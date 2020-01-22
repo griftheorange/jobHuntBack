@@ -8,15 +8,19 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find_by(id: params[:id])
-        render json: @user
+        if params[:id].to_i == token_user_id
+            @user = User.find_by(id: params[:id])
+            render json: @user
+        else
+            render json: {go_away: true}, status: :unauthorized
+        end
     end
 
     def login
         @user = User.find_by(username: params[:username])
         if @user
             if @user.authenticate(params["password"])
-                render json: {token: genToken(@user)}
+                render json: {id: @user.id, type: "user", token: genToken(@user)}
             else
                 render json: {errors: ["Password incorrect"]}
             end
@@ -29,7 +33,7 @@ class UsersController < ApplicationController
     def create
         @user = User.create(username: params[:username], password: params[:password])
         if @user.valid?
-            render json: {token: genToken(@user)}
+            render json: {id: @user.id, type: "user", token: genToken(@user)}
         else 
             render json: {errors: @user.errors.full_messages}
         end
@@ -43,5 +47,11 @@ class UsersController < ApplicationController
     def genToken(user)
         payload = {id: @user.id, type: "user"}
         token = JWT.encode payload, hmac_secret, "HS256"
+    end
+
+    def token_user_id
+        token = request.headers["Authorization"]
+        arr = JWT.decode(token, hmac_secret, true, {algorithm: "HS256"})
+        arr.first["id"]
     end
 end
