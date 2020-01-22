@@ -7,6 +7,6 @@ class Company < ApplicationRecord
 
 
     # validates :username, uniqueness: {message: "must be unique"}
-    validates :username, presence: {message: "can't be blank"}
+    # validates :username, presence: {message: "can't be blank"}
     validates :password_digest, presence: {message: "can't be blank"}
 end
