@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_21_170948) do
+ActiveRecord::Schema.define(version: 2020_01_22_150953) do
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "city"
+    t.string "email"
+    t.string "website"
+    t.string "logo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "job_states", force: :cascade do |t|
     t.string "status"
@@ -24,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_01_21_170948) do
 
   create_table "jobs", force: :cascade do |t|
     t.string "title"
-    t.string "company"
+    t.integer "company_id"
     t.datetime "post_date"
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
