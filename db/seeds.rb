@@ -13,7 +13,7 @@ Job.destroy_all
 JobState.destroy_all
 
 
-u1 = User.create(username: "griffin", password:"ayyy")
+u1 = User.create(username: "y", password:"y")
 u2 = User.create(username: "amra",password:"amra")
 
 
