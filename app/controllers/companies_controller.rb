@@ -1,4 +1,7 @@
 class CompaniesController < ApplicationController
+    
+    require 'jwt'
+
     def index 
         @companies = Company.all
         render json: @companies
@@ -13,7 +16,7 @@ class CompaniesController < ApplicationController
 
 
     def create 
-        @company = Company.create(username: params[:username],password_digest: params[:password_digest])
+        @company = Company.create(username: params["companyName"], password: params["companyPass"])
         if @company.valid?
             render json: {id: @company.id, type: "company", token: genToken(@company)}
         else 
@@ -24,17 +27,15 @@ class CompaniesController < ApplicationController
 
     def login
         @company = Company.find_by(username: params[:companyName])
-
         if @company 
-            
-            if @company.authenticate(params["password"])
+            if @company.authenticate(params["companyPassword"])
                 render json: {id: @company.id, type: "company", token: genToken(@company)}
                 # render json: {token: genToken(@company)}
             else 
                 render json: {errors: ["Password Incorrect"]}
             end
         else 
-            render json: {errors: ["Company not fount"]}
+            render json: {errors: ["Company not found"]}
         end    
     end    
    
@@ -51,5 +52,10 @@ class CompaniesController < ApplicationController
         token = JWT.encode payload, hmac_secret, "HS256"
     end
 
+     def token_user_id
+        token = request.headers["Authorization"]
+        arr = JWT.decode(token, hmac_secret, true, {algorithm: "HS256"})
+        arr.first["id"]
+    end
 
 end
