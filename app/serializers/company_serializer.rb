@@ -1,5 +1,5 @@
 class CompanySerializer < ActiveModel::Serializer
-  attributes :id,:username,:password_digest
+  attributes :id,:username,:password_digest, :logo
 
   has_many :jobs
   has_many :job_states,through: :jobs
