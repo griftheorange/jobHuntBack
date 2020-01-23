@@ -20,6 +20,11 @@ class JobsController < ApplicationController
         end
     end   
 
+    def destroy
+        @job = Job.find_by(params[:id])
+        render json: @job.destroy()
+    end
+
     private
 
 

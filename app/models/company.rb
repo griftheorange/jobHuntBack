@@ -1,6 +1,6 @@
 class Company < ApplicationRecord
     has_secure_password
-    has_many :jobs
+    has_many :jobs, dependent: :destroy
     has_many :job_states,through: :jobs
 
     has_many :users ,through: :job_states

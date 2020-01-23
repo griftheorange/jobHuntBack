@@ -45,9 +45,9 @@ j9 = Job.create(title: "Software Engineer - Entry to Experienced Leve", companyN
 
 
 
-js1 = JobState.create(status: "applying", job_id: j1.id, user_id: u1.id)
+js1 = JobState.create(status: "applying Accepted", job_id: j1.id, user_id: u1.id)
 js2 = JobState.create(status: "hired", job_id: j3.id, user_id: u1.id)
-js3 = JobState.create(status: "applying", job_id: j4.id, user_id: u1.id)
+js3 = JobState.create(status: "interviewing Accepted", job_id: j4.id, user_id: u1.id)
 js4 = JobState.create(status: "hired", job_id: j5.id, user_id: u1.id)
 js5 = JobState.create(status: "applying", job_id: j6.id, user_id: u1.id)
 js6 = JobState.create(status: "hired", job_id: j2.id, user_id: u1.id)
