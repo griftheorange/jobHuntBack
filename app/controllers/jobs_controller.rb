@@ -21,7 +21,8 @@ class JobsController < ApplicationController
     end   
 
     def destroy
-        @job = Job.find_by(params[:id])
+        @job = Job.find_by(id: params[:id])
+        byebug
         render json: @job.destroy()
     end
 
