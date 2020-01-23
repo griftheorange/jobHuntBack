@@ -9,6 +9,11 @@ class JobsController < ApplicationController
         render json: @job
     end
 
+    def update
+        @job = Job.find_by(id: params[:id])
+        @job.update(description: params[:description])
+        render json: @job
+    end
 
 
     def create 
