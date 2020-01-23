@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     def destroy
         @user = User.find_by(id: params[:id])
         @user.destroy()
-        render json: @user
+        render json: @user 
     end
 
     def update
