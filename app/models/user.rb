@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
     validates :username, uniqueness: {message: "must be unique"}
     validates :username, presence: {message: "can't be blank"}
-    validates :password, presence: {message: "can't be blank"}
+    # validates :password, presence: {message: "can't be blank"}
 end

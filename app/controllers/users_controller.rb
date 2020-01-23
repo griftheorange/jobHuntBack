@@ -7,6 +7,28 @@ class UsersController < ApplicationController
         render json: @users
     end
 
+    def destroy
+        @user = User.find_by(id: params[:id])
+        @user.destroy()
+        render json: @user
+    end
+
+    def update
+        @user = User.find_by(id: params[:id])
+        match = User.all.map{|user|
+            user.username
+        }.find{|username|
+            username == params[:username]
+        }
+        if match
+            render json: {error: "Someone already has that username"}
+        else
+            @user.update(username: params[:username])
+            @user.save
+            render json: @user
+        end
+    end
+
     def show
         if params[:id].to_i == token_user_id
             @user = User.find_by(id: params[:id])
