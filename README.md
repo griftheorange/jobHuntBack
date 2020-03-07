@@ -1,13 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Work Smart 
 
-Things you may want to cover:
+A front-end job-platform that allows users to find and apply to different jobs. Allows companies to post jobs and view different user a pplications, schedule their interviews and hire them for different job applications.
 
 * Ruby version
 
 * System dependencies
+
+
+
 
 * Configuration
 
