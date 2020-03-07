@@ -2,7 +2,7 @@
 
 Work Smart 
 
-A front-end job-platform that allows users to find and apply to different jobs. Allows companies to post jobs and view different user a pplications, schedule their interviews and hire them for different job applications.
+A front-end job-platform that allows users to find and apply to different jobs. Allows companies to post jobs and view different user a pplications, schedule their interviews and hire them for differe nt job applications.
 
 * Ruby version
 
