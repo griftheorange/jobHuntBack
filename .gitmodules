@@ -1,0 +1,3 @@
+[submodule "jobs-backend"]
+	path = jobs-backend
+	url = https://github.com/griftheorange/jobHuntBack.git
